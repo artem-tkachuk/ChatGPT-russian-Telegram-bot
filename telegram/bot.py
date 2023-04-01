@@ -1,12 +1,30 @@
 import os
-from telegram import Update, logging
+from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
+from logging_config import setup_logging
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 token = os.environ.get("TOKEN")
 
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="Привет! С помощью этого бота ты можешь общаться с ChatGPT на русском прямо в Telegram :)"
+    )
+
+
+if __name__ == '__main__':
+    setup_logging()
+    application = ApplicationBuilder().token(token).build()
+
+    start_handler = CommandHandler('start', start)
+    application.add_handler(start_handler)
+
+    application.run_polling()
 
 # async def main():
 #     bot = telegram.Bot(token)
@@ -22,32 +40,3 @@ token = os.environ.get("TOKEN")
 #
 # if __name__ == '__main__':
 #     asyncio.run(main())
-
-
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
-)
-
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id,
-        text="Привет! С помощью этого бота ты можешь общаться с ChatGPT на русском :)"
-    )
-
-
-if __name__ == '__main__':
-    application = ApplicationBuilder().token(token).build()
-
-    start_handler = CommandHandler('start', start)
-    application.add_handler(start_handler)
-
-    application.run_polling()
-
-
-
-
-
-
-
