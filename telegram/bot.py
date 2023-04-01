@@ -1,7 +1,5 @@
-import asyncio
 import os
-import logging
-from telegram import Update
+from telegram import Update, logging
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 
 from dotenv import load_dotenv
