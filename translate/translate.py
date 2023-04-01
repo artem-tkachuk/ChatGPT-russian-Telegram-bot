@@ -9,8 +9,6 @@ def translate_text(target, text):
     See https://g.co/cloud/translate/v2/translate-reference#supported_languages
     """
 
-    # chatgpt-russian -- project ID
-
     translate_client = translate.Client()
 
     if isinstance(text, six.binary_type):
