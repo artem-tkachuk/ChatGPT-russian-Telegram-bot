@@ -35,3 +35,4 @@ telegram==0.0.1
 tqdm==4.65.0
 urllib3==1.26.15
 yarl==1.8.2
+pymongo~=4.3.3
