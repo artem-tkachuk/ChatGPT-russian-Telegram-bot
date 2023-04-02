@@ -3,7 +3,7 @@ from telegram.ext import filters, MessageHandler, ContextTypes
 from translate.translate import translate_text
 from utils.validation import validate_msg_in_lang
 
-from openaiAPI.openai import ask_ChatGPT
+from openaiAPI.ask_chat_GPT import ask_ChatGPT
 
 
 async def regular_message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
