@@ -2,7 +2,7 @@ from db.mongo import get_mongo_db
 import os
 
 
-async def find_user(chat_id: str):
+async def find_user(chat_id: int):
     # Setup MongoDB to store chat history and user data
     database = get_mongo_db()
     # Get collection
